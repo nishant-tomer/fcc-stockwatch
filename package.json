@@ -1,10 +1,10 @@
 {
-  "name": "chat-example",
+  "name": "stockwatch",
   "version": "0.0.0",
-  "description": "A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.",
+  "description": "A challenge cdone for Free Code Camp Curriculum",
   "main": "server.js",
   "repository": "",
-  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
+  "author": "Nishant Tomer<nishantfun4@gmail.com>",
   "dependencies": {
     "async": "^0.2.8",
     "express": "^4.2.4",
