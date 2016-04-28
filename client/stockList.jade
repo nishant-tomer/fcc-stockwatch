@@ -1,0 +1,17 @@
+doctype html
+html(style='height:100%;')
+  head
+    title Stock Watch | List
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    
+  body(style='background:orange; height:100%; padding:5% 5% 0 5%')
+    .container
+      .row(style="background:white;")
+        - for (var x = 0; x < symbols.length; x++)
+            .col-md-3( style= "padding: 1%;")
+              div.symbol(style="padding: 2% 5%; color:white; border-left:solid 5px #cc00ff;background:#cc6600; min-height: 150px;")
+                  h3 #{symbols[x].name}
+                  p #{symbols[x].desc}
+                  
+
+    link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css")

@@ -1,0 +1,42 @@
+doctype html
+html(style='height:100%;')
+  head
+    title Stock Watch
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    
+  body(style='background:orange; height:100%; padding:5% 5% 0 5%')
+    .container
+      .row
+        #containerChart(style='min-width:350px; height:400px;')
+          
+      .row(style="background:white;")
+        script.
+          var symbols = '!{JSON.stringify(symbols)}' || null 
+        - for (var x = 0; x < symbols.length; x++)
+            .col-md-4.symbol( style= "padding: 1%;")
+              div(style="padding: 2% 5%; color:white; border-left:solid 5px #cc00ff;background:#cc6600; min-height: 125px;")
+                  h3 #{symbols[x].name}
+                    button.remove.btn.btn-xs.btn-danger.glyphicon.glyphicon-remove.pull-right(style="font-size:0.9rem;",id='#{symbols[x]._id}')
+                  p #{symbols[x].desc}
+                  
+        .col-md-4#inputPanel( style= "padding: 1%")
+          div( style="padding: 2% 5%; color:white; border-left:solid 5px #cc00ff; background:#cc6600; min-height: 125px;")
+            p#msg Real time syncing with everyone else
+            input#input.form-control(type="text", placeholder="Stock Code here")
+            button#add.btn.btn-success.pull-right(style="margin:5px 0;") Add
+            a.btn.btn-default( style="background:none; margin:5px 0;" , target="_blank",href="/stocks") Stock Code List 
+        .col-md-4( style= "padding: 1%")
+          div.text-center(style="padding: 2% 5%; color:white; background:#cc6600; min-height: 125px;")
+            h4 Nishant Tomer for FreeCodeCamp
+            p
+              h5 Credits : HighCharts Quandl jQuery Bootstrap Node
+            a.btn.btn-default( style="background:none; margin:5px 5px;" , target="_blank",href="https://www.freecodecamp.com/challenges/chart-the-stock-market") FCC | Instructions
+            a.btn.btn-default( style="background:none; margin:5px 5px;" , target="_blank",href="https://github.com/nishant-tomer/fcc-stockwatch") GitHub
+
+
+    script(src='/js/jquery.min.js')
+    link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css")
+    script(src='https://code.highcharts.com/stock/highstock.js')
+    script(src="/socket.io/socket.io.js") 
+    script(src='/js/app.js')
+            
