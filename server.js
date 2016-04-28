@@ -11,7 +11,7 @@ app.use(express.static(require("path").join(__dirname + "/client")))
 
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI+'/test');
+mongoose.connect(process.env.MONGODB_URI);
 var stockSchema = new mongoose.Schema({
   name:  String,
   desc: String,
