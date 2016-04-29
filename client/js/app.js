@@ -5,12 +5,9 @@ $(function () {
 
     var socket = io.connect();
     socket.on('connect', function() {
-        alert ("connect")
     });
 
     socket.on("add",function(data){
-      alert ("add")
-
          addSeries(data.name)
     })
     socket.on("remove",function(data){
