@@ -23,6 +23,7 @@ app.get("/", function(req, res) {
     Stock.find({selected:"true"})
          .exec()
          .then(function(data){
+           console.log(data)
            res.render("index.jade", {symbols:data})
          }, function(err){
            return err
@@ -100,6 +101,7 @@ io.sockets.on('connection', function(socket){
       Stock.findOne({name:data.name}, function(err,stock){
           if (err){ console.log("error in add"); return null}
           console.log(data.name + " findone" )
+          console.log(stock + " findone" )
 
           if (stock.selected == "false"){
             setStock(data.name)
