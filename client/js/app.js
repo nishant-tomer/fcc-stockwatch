@@ -46,7 +46,6 @@ $(function () {
         var name = $("#input").val().trim().toUpperCase()
         if( validate(name) ){
           $("#input").val("")
-          alert( name )
           socket.emit("add",{"name":name})
         } else {
           error("Invalid Code")

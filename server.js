@@ -96,6 +96,7 @@ var io = require("socket.io").listen( app.listen(process.env.PORT || 8080) )
 
 io.sockets.on('connection', function(socket){
     socket.on("add",function(data){
+      console.log(data.name + "recieved" )
       Stock.findOne({name:data.name}, function(err,stock){
           if (err){ console.log("error in add"); return null}
           if (stock.selected == "false"){
