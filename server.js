@@ -97,16 +97,12 @@ var io = require("socket.io").listen( app.listen(process.env.PORT || 8080) )
 
 io.sockets.on('connection', function(socket){
     socket.on("add",function(data){
-      console.log(data.name + " recieved" )
       Stock.findOne({name:data.name}, function(err,stock){
           if (err){ console.log("error in add"); return null}
-          console.log(data.name + " findone" )
-          console.log(stock + " findone" )
 
           if (stock.selected == "false"){
             setStock(data.name)
                     .then( function (success){
-                      console.log(data.name + " emitting to all" )
                       io.sockets.emit('add',{ "name" : data.name });
                     }, function(err){ console.log("error in add")})
           }
