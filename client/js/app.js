@@ -5,13 +5,17 @@ $(function () {
 
     var socket = io.connect();
     socket.on('connect', function() {
-      socket.on("add",function(data){
-           addSeries(data.name)
-      })
-      socket.on("remove",function(data){
-          removeSeries(data.id)
-      })
+        alert ("connect")
     });
+
+    socket.on("add",function(data){
+      alert ("add")
+
+         addSeries(data.name)
+    })
+    socket.on("remove",function(data){
+        removeSeries(data.id)
+    })
 
     if (symbols !== "[]" && symbols !== null ) {
         symbols = JSON.parse(symbols)
@@ -144,7 +148,7 @@ $(function () {
     			var mo = data[i][0].split('-')[1];
     			var dy = data[i][0].split('-')[2];
     			var date = Date.UTC(yr,mo - 1,dy);
-    			var price = data[i][1];
+    			var price = data[i][4];
     			timeSeries.push([date,price]);
     		}
     		return timeSeries;
