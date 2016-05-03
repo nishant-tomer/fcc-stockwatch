@@ -28,7 +28,10 @@ $(function () {
                 }
                 seriesCounter += 1;
                 if (seriesCounter === symbols.length) {
-                    createChart();
+                  var chart = $('#containerChart').highcharts();
+                  seriesOptions.forEach( function(series,index){
+                    chart.addSeries(series);
+                  })
                 }
             })
             .fail( function( jqxhr, textStatus, error ) {
@@ -95,9 +98,10 @@ $(function () {
                 valueDecimals: 2
             },
 
-            series: seriesOptions
+            series: []
         });
     }
+    createChart()
 
     function addSeries(name){
       var chart = $('#containerChart').highcharts();
