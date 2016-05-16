@@ -17,6 +17,7 @@ $(function () {
     if (symbols !== "[]" && symbols !== null ) {
         symbols = JSON.parse(symbols)
         $.each(symbols, function (i, symbol) {
+
           $.getJSON('/stock/'+symbol.name)
             .done( function (seriesData) {
               var timeSeries = seriesData.data;
@@ -54,6 +55,7 @@ $(function () {
 
     $(document).on('click',".remove",function(event){
       var id = $(this).attr("id")
+      console.log(id)
       socket.emit("remove", {"id":id})
     })
 
@@ -62,9 +64,6 @@ $(function () {
         $('#containerChart').highcharts('StockChart', {
 
           credits:{
-            enabled:false
-          },
-          navigator:{
             enabled:false
           },
             rangeSelector: {
